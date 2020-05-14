@@ -1,3 +1,15 @@
+var d = new Date();
+var hours = d.getHours();
+var minutes = d.getMinutes();
+
+$("#time").html(d);
+
+if (hours > 14) {
+    $("#lunch-dinner").html("DINNER");
+} else {
+    $("#lunch-dinner").html("LUNCH");
+}
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyA0SRXYJT8nBSRzQSJkbbUBdRdWF2YHTr4",
@@ -30,8 +42,6 @@ var firebaseConfig = {
   });
 
   firebase.database().ref().on("child_added", function(snapshot){
-
-
         if(snapshot.val().Comment === undefined) {
             return; 
         }
