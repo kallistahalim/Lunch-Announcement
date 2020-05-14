@@ -10,3 +10,9 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  firebase.database().ref().on("value", function(snapshot){
+      $("#menu").html(snapshot.val().Name);
+      $("#ingredients").html(snapshot.val().Ingredients);
+
+  })
