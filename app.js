@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyA0SRXYJT8nBSRzQSJkbbUBdRdWF2YHTr4",
     authDomain: "lunch-announcement.firebaseapp.com",
@@ -26,14 +27,14 @@ var firebaseConfig = {
       firebase.database().ref().push({
         Comment:comment
       });
-  })
+  });
 
   firebase.database().ref().on("child_added", function(snapshot){
 
 
         if(snapshot.val().Comment === undefined) {
-            return;
-            
+            return; 
         }
         $("#conversation").append(snapshot.val().Comment + "<br>"); 
-  })
+  });
+
