@@ -12,7 +12,27 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   firebase.database().ref().on("value", function(snapshot){
+      console.log(snapshot.val())
       $("#menu").html(snapshot.val().Name);
       $("#ingredients").html(snapshot.val().Ingredients);
 
+
+  });
+
+  var comment="";
+
+  $("#submit").on("click", function(){
+      comment = $("#comment-lunch").val().trim();
+      firebase.database().ref().push({
+        Comment:comment
+      });
+  })
+
+  firebase.database().ref().on("child_added", function(snapshot){
+        $("#conversation").append(snapshot.val().Comment + "<br>");
+
+        if(snapshot.val().Comment === undefined) {
+            return false //dammit it is not working
+        }
+        
   })
