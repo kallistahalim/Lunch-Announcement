@@ -29,10 +29,11 @@ var firebaseConfig = {
   })
 
   firebase.database().ref().on("child_added", function(snapshot){
-        $("#conversation").append(snapshot.val().Comment + "<br>");
+
 
         if(snapshot.val().Comment === undefined) {
-            return false //dammit it is not working
+            return;
+            
         }
-        
+        $("#conversation").append(snapshot.val().Comment + "<br>"); 
   })
