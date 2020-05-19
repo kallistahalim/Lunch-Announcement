@@ -39,6 +39,7 @@ var firebaseConfig = {
       firebase.database().ref().push({
         Comment:comment
       });
+      return false;
   });
 
   firebase.database().ref().on("child_added", function(snapshot){
